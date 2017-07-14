@@ -11,10 +11,12 @@ void initPlotter(){
 
 void drawLine(unsigned char xStart, unsigned char yStart, unsigned char xEnd, unsigned char yEnd){
 	// todo: xStart und xEnd beliebig, bis jetzt xStart < xEnd!!!
-	signed char deltaX, deltaY, space;
-	unsigned char totalSteps, spaceSteps, restSteps;
-	deltaX = abs(xStart - xEnd);
-	deltaY = abs(yStart - yEnd);
+	unsigned char deltaX, deltaY;
+	unsigned char n, ratio, rest, swap;
+	//unsigned char directionHorizontal, directionVertical;
+	
+	deltaX = abs((signed char)xStart - (signed char)xEnd);
+	deltaY = abs((signed char)yStart - (signed char)yEnd);
 	
 	move(xStart, yStart);
 	
@@ -25,26 +27,56 @@ void drawLine(unsigned char xStart, unsigned char yStart, unsigned char xEnd, un
 	- stufe mit der größe rest noch zeichnen
 	*/
 	
-	if(deltaX < deltaY){
-		space = deltaY / deltaX;
-		totalSteps = deltaX;
-		restSteps = deltaY % deltaX;
-		
-		while(deltaX){
-			spaceSteps = space;
-			while(space){
-				yUp(space);
-				spaceSteps--;
+	if(deltaX <= deltaY){
+		// Line is heigher than wider
+		ratio = deltaY / deltaX;
+		rest = deltaY % deltaX;
+		if(yStart <= yEnd){
+			// Line goes up
+			n = deltaX;
+			while(n){
+				drawingPin = 1;
+				yUp(ratio);
+				drawingPin = 0;
+				xUp(1);
+				n--;
 			}
-			xUp(1);
-			deltaY--;
+		}else{
+			// Line goes down
+			n = deltaY;
+			while(n){
+				drawingPin = 1;
+				yDown(ratio);
+				drawingPin = 0;
+				xUp(1);
+				n--;
+			}
 		}
-		yUp(restSteps);
-		
-		
 	}else{
-		space = deltaY / deltaX;
-		//todo
+		// Line is wider than heigher
+		ratio = deltaX / deltaY;
+		rest = deltaX % deltaY;
+		if(yStart <= yEnd){
+			// Line goes up
+			n = deltaX;
+			while(n){
+				drawingPin = 1;
+				xUp(ratio);
+				drawingPin = 0;
+				yUp(1);
+				n--;
+			}
+		}else{
+			//Line goes down
+			n = deltaX;
+			while(n){
+				drawingPin = 1;
+				xUp(ratio);
+				drawingPin = 0;
+				yDown(1);
+				n--;
+			}
+		}
 	}
 	
 }

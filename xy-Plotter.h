@@ -1,15 +1,16 @@
 #ifndef _XY_PLOTTER_H_
 #define _XY_PLOTTER_H_
+
 #include <at89c5131.h>
 #include <math.h>
 
-#define plotterPort	P0
+#define plotterPort		P0
 
 #define xUpPin			P0_0			/* High activ */		
 #define xDownPin		P0_1			/* "" */
 #define yUpPin			P0_2			/* "" */
 #define yDownPin		P0_3			/* "" */
-#define DrawingPin	P0_4			/* 0=Up, 1=Down */
+#define DrawingPin		P0_4			/* 0=Up, 1=Down */
 #define ColorPin1		P0_5			
 #define ColorPin2		P0_6			/* 00 = schwarz; 10 = rot; 01 = blau; 11= grün  */
 #define ResetPin		P0_7			/* Reset */
