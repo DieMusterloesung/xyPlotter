@@ -32,14 +32,12 @@ void initPlotter();
 
 void drawLine(unsigned char xStart, unsigned char yStart, unsigned char xEnd, unsigned char yEnd);
 /*
-	draw a Line from start cords to end cords
+	draw a Line from start cords to end cords with given color
 */
 
 void drawPixel(unsigned char xPos, unsigned char yPos, Color c);
 /*
-	xPos: 	x position
-	yPos: 	y position
-	c:			Color of pixel
+	draw a Pixel at given cord with given color
 */
 
 void move(unsigned char xPos, unsigned char yPos);
@@ -61,7 +59,7 @@ extern unsigned char xCurrent;
 extern unsigned char yCurrent;
 extern unsigned char isDrawing;
 /*
-global variables for plotter pos and draw mode
+	global variables for plotter pos and draw mode
 */
 
 #endif
