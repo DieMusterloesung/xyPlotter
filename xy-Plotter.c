@@ -49,7 +49,7 @@ void drawLine(unsigned char xStart, unsigned char yStart, unsigned char xEnd, un
 	
 }
 
-void drawPixel(unsigned char xPos, unsigned char yPos, color c){
+void drawPixel(unsigned char xPos, unsigned char yPos, Color c){
 	move(xPos, yPos);
 	setColor(c);
 	DrawingPin = 1;
@@ -75,7 +75,7 @@ void move(unsigned char xPos, unsigned char yPos){
 	}
 }
 
-void setColor(color c){
+void setColor(Color c){
 	switch(c){
 		case black:
 			ColorPin1 = 0;

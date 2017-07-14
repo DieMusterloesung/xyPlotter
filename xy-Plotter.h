@@ -14,9 +14,9 @@
 #define ColorPin2		P0_6			/* 00 = schwarz; 10 = rot; 01 = blau; 11= grün  */
 #define ResetPin		P0_7			/* Reset */
 
-typedef enum {black, red, blue, green} color;
+typedef enum {black, red, blue, green} Color;
 /*
-	color typ with 4 constants for each of the 4 supported colors
+	Color typ with 4 constants for each of the 4 supported colors
 */
 
 static unsigned char WIDTH = 80;
@@ -35,11 +35,11 @@ void drawLine(unsigned char xStart, unsigned char yStart, unsigned char xEnd, un
 	draw a Line from start cords to end cords
 */
 
-void drawPixel(unsigned char xPos, unsigned char yPos, color c);
+void drawPixel(unsigned char xPos, unsigned char yPos, Color c);
 /*
 	xPos: 	x position
 	yPos: 	y position
-	c:			color of pixel
+	c:			Color of pixel
 */
 
 void move(unsigned char xPos, unsigned char yPos);
@@ -47,9 +47,9 @@ void move(unsigned char xPos, unsigned char yPos);
 	moves the plotter to the given cords
 */
 
-void setColor(color c);
+void setColor(Color c);
 /*
-	set the given color
+	set the given Color
 */
 
 void xUp(unsigned char n);
