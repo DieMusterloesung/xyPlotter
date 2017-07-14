@@ -44,46 +44,6 @@ void drawLine(unsigned char xStart, unsigned char yStart, unsigned char xEnd, un
 	
 }
 
-void drawDiagonalLineUp(unsigned char xPos, unsigned char yPos, unsigned char length, color c){
-	setColor(c);
-	move(xPos, yPos);
-	while(length){
-		DrawingPin = 1;
-		DrawingPin = 0;
-		xUp(1);
-		yUp(1);
-		length--;
-	}
-}
-
-void drawDiagonalLineDown(unsigned char xPos, unsigned char yPos, unsigned char length, color c){
-	setColor(c);
-	move(xPos, yPos);
-	while(length){
-		DrawingPin = 1;
-		DrawingPin = 0;
-		xUp(1);
-		yDown(1);
-		length--;
-	}
-}
-
-void drawHorizontalLine(unsigned char xPos, unsigned char yPos, unsigned char length, color c){
-	move(xPos, yPos);
-	setColor(c);
-	DrawingPin = 1;
-	xUp(length);
-	DrawingPin = 0;
-}
-
-void drawVerticalLine(unsigned char xPos, unsigned char yPos, unsigned char height, color c){
-	move(xPos, yPos);
-	setColor(c);
-	DrawingPin = 1;
-	yUp(height);
-	DrawingPin = 0;
-}
-
 void drawPixel(unsigned char xPos, unsigned char yPos, color c){
 	move(xPos, yPos);
 	setColor(c);

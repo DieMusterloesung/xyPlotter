@@ -29,25 +29,6 @@ size(pixels) of the plotter
 
 void drawLine(unsigned char xStart, unsigned char yStart, unsigned char xEnd, unsigned char yEnd);
 
-void drawDiagonalLineUp(unsigned char xPos, unsigned char yPos, unsigned char length, color c);
-void drawDiagonalLineDown(unsigned char xPos, unsigned char yPos, unsigned char length, color c);
-
-void drawHorizontalLine(unsigned char xPos, unsigned char yPos, unsigned char length, color c);
-/*
-xPos: 	x start position
-yPos: 	y start position
-length:	length of the line to the right
-	!!! draws only from start pos to right site !!!
-*/
-
-void drawVerticalLine(unsigned char xPos, unsigned char yPos, unsigned char height, color c);
-/*
-xPos: 	x start position
-yPos: 	y start position
-hiegth:	heigth of the line to the upper
-	!!! draws only from start pos to the top !!!
-*/
-
 void drawPixel(unsigned char xPos, unsigned char yPos, color c);
 /*
 xPos: 	x position
