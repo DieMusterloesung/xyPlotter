@@ -29,6 +29,9 @@ static unsigned char HEIGTH_HALF = 40;
 */
 
 void initPlotter();
+/*
+	call first
+*/
 
 void drawLine(unsigned char xStart, unsigned char yStart, unsigned char xEnd, unsigned char yEnd);
 /*
