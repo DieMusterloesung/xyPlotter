@@ -3,6 +3,7 @@
 #include <at89c5131.h>
 #include <math.h>
 
+#define plotterPort	P0
 
 #define xUpPin			P0_0			/* High activ */		
 #define xDownPin		P0_1			/* "" */
@@ -13,9 +14,9 @@
 #define ColorPin2		P0_6			/* 00 = schwarz; 10 = rot; 01 = blau; 11= grün  */
 #define ResetPin		P0_7			/* Reset */
 
-typedef enum {schwarz, rot, blau, gruen} color;
+typedef enum {black, red, blue, green} color;
 /*
-enemun for color
+	color typ with 4 constants for each of the 4 supported colors
 */
 
 static unsigned char WIDTH = 80;
@@ -24,29 +25,33 @@ static unsigned char HEIGTH = 80;
 static unsigned char WIDTH_HALF = 40;
 static unsigned char HEIGTH_HALF = 40;
 /*
-size(pixels) of the plotter
+	pixel width and height of the plotter and half
 */
 
+void initPlotter();
+
 void drawLine(unsigned char xStart, unsigned char yStart, unsigned char xEnd, unsigned char yEnd);
+/*
+	draw a Line from start cords to end cords
+*/
 
 void drawPixel(unsigned char xPos, unsigned char yPos, color c);
 /*
-xPos: 	x position
-yPos: 	y position
-c:			color of pixel
+	xPos: 	x position
+	yPos: 	y position
+	c:			color of pixel
 */
 
 void move(unsigned char xPos, unsigned char yPos);
 /*
-xPos: 	moves to x
-yPos: 	moves to y
-	!!! disables drawing !!!
+	moves the plotter to the given cords
 */
 
 void setColor(color c);
 /*
-c:			color to set
+	set the given color
 */
+
 void xUp(unsigned char n);
 void xDown(unsigned char n);
 void yUp(unsigned char n);

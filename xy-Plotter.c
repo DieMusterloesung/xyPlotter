@@ -4,6 +4,11 @@ unsigned char xCurrent = 0;
 unsigned char yCurrent = 0;
 unsigned char isDrawing = 0;
 
+
+void initPlotter(){
+	plotterPort = 0x00;
+}
+
 void drawLine(unsigned char xStart, unsigned char yStart, unsigned char xEnd, unsigned char yEnd){
 	// todo: xStart und xEnd beliebig, bis jetzt xStart < xEnd!!!
 	signed char deltaX, deltaY, space;
@@ -72,19 +77,19 @@ void move(unsigned char xPos, unsigned char yPos){
 
 void setColor(color c){
 	switch(c){
-		case schwarz:
+		case black:
 			ColorPin1 = 0;
 			ColorPin2 = 0;
 			break;
-		case rot:
+		case red:
 			ColorPin1 = 1;
 			ColorPin2 = 0;
 			break;
-		case blau:
+		case blue:
 			ColorPin1 = 0;
 			ColorPin2 = 1;
 			break;
-		case gruen:
+		case green:
 			ColorPin1 = 1;
 			ColorPin2 = 1;
 			break;
