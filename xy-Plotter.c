@@ -28,6 +28,7 @@ void drawLine(unsigned char xStart, unsigned char yStart, unsigned char xEnd, un
 	*/
 	
 	if(deltaX <= deltaY){
+		deltaX++;
 		// Line is heigher than wider
 		ratio = deltaY / deltaX;
 		rest = deltaY % deltaX;
@@ -35,49 +36,56 @@ void drawLine(unsigned char xStart, unsigned char yStart, unsigned char xEnd, un
 			// Line goes up
 			n = deltaX;
 			while(n){
-				drawingPin = 1;
+				DrawingPin = 1;
 				yUp(ratio);
-				drawingPin = 0;
+				DrawingPin = 0;
 				xUp(1);
 				n--;
 			}
+			++xEnd;
 		}else{
 			// Line goes down
-			n = deltaY;
+			n = deltaX;
 			while(n){
-				drawingPin = 1;
+				DrawingPin = 1;
 				yDown(ratio);
-				drawingPin = 0;
+				DrawingPin = 0;
 				xUp(1);
 				n--;
 			}
+			--xEnd;
 		}
 	}else{
+		deltaY++;
 		// Line is wider than heigher
 		ratio = deltaX / deltaY;
 		rest = deltaX % deltaY;
 		if(yStart <= yEnd){
 			// Line goes up
-			n = deltaX;
+			n = deltaY;
 			while(n){
-				drawingPin = 1;
+				DrawingPin = 1;
 				xUp(ratio);
-				drawingPin = 0;
+				DrawingPin = 0;
 				yUp(1);
 				n--;
 			}
+			++yEnd;
 		}else{
 			//Line goes down
-			n = deltaX;
+			n = deltaY;
 			while(n){
-				drawingPin = 1;
+				DrawingPin = 1;
 				xUp(ratio);
-				drawingPin = 0;
+				DrawingPin = 0;
 				yDown(1);
 				n--;
 			}
+			--yEnd;
 		}
 	}
+	xCurrent = xEnd;
+	yCurrent = yEnd;
 	
 }
 
@@ -89,22 +97,25 @@ void drawPixel(unsigned char xPos, unsigned char yPos, Color c){
 }
 
 void move(unsigned char xPos, unsigned char yPos){
-	signed char n;
+	signed char dif;
 	
 	DrawingPin = 0;
-	n = xPos - xCurrent;
-	if(n > 0){
-		xUp(n);
+	dif = (signed char)xPos - (signed char)xCurrent;
+	if(dif > 0){
+		xUp(dif);
 	}else{
-		xDown(abs(n));
+		xDown(abs(dif));
 	}
 	
-	n = yPos - yCurrent;
-	if(n > 0){
-		yUp(n);
+	dif = (signed char)yPos - (signed char)yCurrent;
+	if(dif > 0){
+		yUp(dif);
 	}else{
-		yDown(abs(n));
+		yDown(abs(dif));
 	}
+	
+	xCurrent = xPos;
+	yCurrent = yPos;
 }
 
 void setColor(Color c){
